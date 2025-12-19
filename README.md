@@ -51,7 +51,7 @@ sudo dnf module install -y php:remi-8.4/minimal
 
 # Copy pasting the extension list from the documentation
 # Some may be included in php-common already, but we are being explicit with what's required here
-sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3 php-fpm
+sudo dnf install -y php-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
 
 sudo systemctl enable --now php-fpm
 
