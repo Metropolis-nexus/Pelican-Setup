@@ -48,5 +48,6 @@ sudo rm /etc/ld.so.preload
 
 sudo dnf module install -y php:remi-8.4/minimal
 sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3
+sudo dnf module install -y composer:2
 sudo systemctl enable --now php-fpm
 ```
