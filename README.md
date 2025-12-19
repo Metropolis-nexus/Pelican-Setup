@@ -48,7 +48,29 @@ sudo systemctl enable --now valkey
 sudo rm /etc/ld.so.preload
 
 sudo dnf module install -y php:remi-8.4/minimal
-sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3
+
+# Copy pasting the extension list from the documentation
+# Some may be included in php-common already, but we are being explicit with what's required here
+sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3 php-fpm
+
 sudo dnf module install -y composer:2
 sudo systemctl enable --now php-fpm
+```
+
+- Add `/etc/yum.repos.d/mariadb.repo`
+
+```
+[mariadb]
+name = MariaDB
+baseurl = https://rpm.mariadb.org/11.8/rhel/$releasever/$basearch
+gpgkey= https://rpm.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+```
+
+- Install MariaDB
+
+```
+# MariaDB-client is a dependency of MariaDB-server, but we are being explicit here
+# since the client is needed to manage the server anyways
+sudo dnf install -y MariaDB-server
 ```
