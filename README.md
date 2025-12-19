@@ -169,3 +169,5 @@ sudo chown -R nginx:nginx /var/www/pelican
  Webserver Group [www-data]:
  > nginx
 ```
+
+- Edit `/var/www/pelican/.env` and set `APP_URL`.
