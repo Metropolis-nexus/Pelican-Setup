@@ -111,5 +111,8 @@ exit
 mkdir -p /var/www/pelican
 cd /var/www/pelican
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | tar -xzv
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 php artisan p:environment:setup
+chmod -R 755 storage/* bootstrap/cache/
+sudo chown -R nginx:nginx /var/www/pelican
 ```
