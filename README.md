@@ -74,4 +74,5 @@ gpgcheck=1
 # MariaDB-client is a dependency of MariaDB-server, but we are being explicit here
 # since the client is needed to manage the server anyways
 sudo dnf install -y MariaDB-server MariaDB-client
+sudo systemctl enable --now mariadb
 ```
