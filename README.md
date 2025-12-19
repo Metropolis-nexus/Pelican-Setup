@@ -24,3 +24,11 @@ priority=1
 ```
 sudo dnf install -y nginx
 ```
+
+- Install Remi's repository
+
+```
+sudo subscription-manager repos --enable codeready-builder-for-rhel-10-x86_64-rpms
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
+sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-10.rpm
+```
