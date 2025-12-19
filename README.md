@@ -116,3 +116,29 @@ php artisan p:environment:setup
 chmod -R 755 storage/* bootstrap/cache/
 sudo chown -R nginx:nginx /var/www/pelican
 ```
+
+- Configure Pelican MariaDB
+```
+[root@pelican pelican]# php artisan p:environment:database
+
+ Do you want to continue? (yes/no) [no]:
+ > yes
+
+ Database Driver [SQLite (recommended)]:
+ > mariadb                 
+
+ Database Host [127.0.0.1]:
+ > 
+
+ Database Port [3306]:
+ > 
+
+ Database Name [panel]:
+ > pelican                               
+
+ Database Username [pelican]:
+ > 
+
+ Database Password:
+ >
+```
