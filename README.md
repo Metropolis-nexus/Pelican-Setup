@@ -47,11 +47,11 @@ sudo systemctl enable --now valkey
 # Remove hardened_malloc from being preloaded, as it breaks php-fpm
 sudo rm /etc/ld.so.preload
 
+sudo dnf module install -y php:remi-8.4/minimal
+
 # Copy pasting the extension list from the documentation
 # Some may be included in php-common already, but we are being explicit with what's required here
-# We will include cli despite of it already being a dependency since it's needed for management 
-# The official documentation forgot to mention pear but we will also include it
-sudo dnf install -y php84-php-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm,cli,pear}
+sudo dnf install -y php-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
 
 sudo systemctl enable --now php-fpm
 
