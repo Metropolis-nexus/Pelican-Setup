@@ -142,3 +142,30 @@ sudo chown -R nginx:nginx /var/www/pelican
  Database Password:
  >
 ```
+
+- Configure Pelican Redis
+
+```
+[root@pelican pelican]# php artisan p:redis:setup                       
+
+ Redis Host [127.0.0.1]:
+ >              
+
+ Redis User:
+ > 
+
+ Redis Password:
+ > 
+
+ Redis Port [6379]:
+ > 
+
+ Queue worker service name [pelican-queue]:
+ > 
+
+ Webserver User [www-data]:
+ > nginx
+
+ Webserver Group [www-data]:
+ > nginx
+```
