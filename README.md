@@ -23,6 +23,7 @@ priority=1
 
 ```
 sudo dnf install -y nginx
+sudo systemctl enable --now nginx
 ```
 
 - Install Remi's repository
