@@ -6,6 +6,7 @@
 PermitRootLogin prohibit-password
 ```
 - Restart sshd
+- rsync TLS certificates to `/certs/`
 - Add `/etc/yum.repos.d/nginx.repo`
 
 ```
