@@ -43,8 +43,10 @@ sudo systemctl enable --now valkey
 - Install PHP 8.4
 
 ```
-sudo dnf module install -y php:remi-8.4
-# Just copying directly from the docs here, some extensions are already included in php-commons
-# cli, fpm, mbstring, and xml are explicitly part of php:remi-8.4/common so they are not mentioned below
-sudo dnf install -y php-gd php-mysql php-bcmath php-curl php-zip php-intl php-sqlite3
+# Remove hardened_malloc from being preloaded, as it breaks php-fpm
+sudo rm /etc/ld.so.preload
+
+sudo dnf module install -y php:remi-8.4/minimal
+sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3
+sudo systemctl enable --now php-fpm
 ```
