@@ -98,4 +98,5 @@ Reload privilege tables now? [Y/n] y
 CREATE USER 'pelican'@'127.0.0.1' IDENTIFIED BY 'REDACTED';
 CREATE DATABASE pelican;
 GRANT ALL PRIVILEGES ON *.* TO 'pelican'@'127.0.0.1' WITH GRANT OPTION;
+exit
 ```
