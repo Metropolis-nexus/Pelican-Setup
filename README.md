@@ -51,7 +51,7 @@ sudo dnf module install -y php:remi-8.4/minimal
 
 # Copy pasting the extension list from the documentation
 # Some may be included in php-common already, but we are being explicit with what's required here
-# The official documentation forgot to mention php-sodium, but it is needed for `composer install`
+# The official documentation forgot to mention php-sodium, but it is needed for `composer install`,
 # so we will include it
 sudo dnf install -y php-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm,sodium}
 
