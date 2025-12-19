@@ -53,8 +53,9 @@ sudo dnf module install -y php:remi-8.4/minimal
 # Some may be included in php-common already, but we are being explicit with what's required here
 sudo dnf install -y php-gd php-mysql php-mbstring php-bcmath php-xml php-curl php-zip php-intl php-sqlite3 php-fpm
 
-sudo dnf module install -y composer:2
 sudo systemctl enable --now php-fpm
+
+sudo dnf module install -y composer:2
 ```
 
 - Add `/etc/yum.repos.d/mariadb.repo`
