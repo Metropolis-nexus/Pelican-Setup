@@ -80,11 +80,22 @@ sudo systemctl enable --now mariadb
 - Secure MariaDB
 
 ```
-[root@pelican yum.repos.d]# mariadb-secure-installation
+[root@pelican ~]# mariadb-secure-installation
+
 Enter current password for root (enter for none):
 Switch to unix_socket authentication [Y/n] y
 Change the root password? [Y/n] n
 Remove anonymous users? [Y/n] y
 Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
+```
+
+- Create MariaDB user
+
+```
+[root@pelican ~]# mariadb -u root
+
+CREATE USER 'pelican'@'127.0.0.1' IDENTIFIED BY 'REDACTED';
+CREATE DATABASE pelican;
+GRANT ALL PRIVILEGES ON *.* TO 'pelican'@'127.0.0.1' WITH GRANT OPTION;
 ```
