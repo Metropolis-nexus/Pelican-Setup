@@ -273,6 +273,14 @@ If you would like to create an account with a random password emailed to the use
  >
 ```
 
+- Install wings
+
+```bash
+mkdir -p /etc/pelican /var/run/wings
+curl -L -o /usr/local/bin/wings "https://github.com/pelican-dev/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
+chmod u+x /usr/local/bin/wings
+```
+
 # Panel configuration
 
 ## Settings 
