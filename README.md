@@ -279,6 +279,7 @@ If you would like to create an account with a random password emailed to the use
 
 ### General
 - Avatar Provider -> UI Avatars
+- Allow users to upload own avatar -> Enable
 - Trusted Proxies -> NGINX reverse proxy's IP address
 
 ### OAuth
