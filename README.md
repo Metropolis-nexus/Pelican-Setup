@@ -185,6 +185,12 @@ GRANT ALL PRIVILEGES ON *.* TO 'pelican'@'127.0.0.1' WITH GRANT OPTION;
 exit
 ```
 
+- Install additional dependencies
+
+```
+dnf install -y cronie vi
+```
+
 - Setup Pelican
 
 ```bash
@@ -289,6 +295,7 @@ chmod u+x /usr/local/bin/wings
 - Avatar Provider -> UI Avatars
 - Allow users to upload own avatar -> Enable
 - Trusted Proxies -> NGINX reverse proxy's IP address
+- 
 
 ### OAuth
 - Authentik -> Enable
