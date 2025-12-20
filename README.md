@@ -34,13 +34,9 @@ server_tokens off;
 
 server {
     listen 443 ssl default_server;
-#    server_name pelican.metropolis.nexus;
 
     root /var/www/pelican/public;
     index index.php;
-
-    access_log /var/log/nginx/pelican.app-access.log;
-    error_log  /var/log/nginx/pelican.app-error.log error;
 
     # allow larger file uploads and longer script runtimes
     client_max_body_size 100m;
