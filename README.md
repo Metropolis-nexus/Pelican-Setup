@@ -27,6 +27,12 @@ sudo dnf install -y nginx
 sudo systemctl enable --now nginx
 ```
 
+- Configure SELinux
+
+```bash
+setsebool -P httpd_can_network_redis 1
+```
+
 - Install Remi's repository
 
 ```bash
