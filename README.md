@@ -271,3 +271,12 @@ If you would like to create an account with a random password emailed to the use
  Password:
  >
 ```
+
+# Panel configuration
+
+## Advanced
+
+Database host -> Add database
+- User: pelican
+- Host: 127.0.0.1
+- Display Name: host.docker.internal
