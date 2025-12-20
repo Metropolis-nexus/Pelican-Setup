@@ -248,3 +248,24 @@ chown -R nginx:nginx /var/www/pelican
 ```
 
 - Edit `/var/www/pelican/.env` and set `APP_URL`.
+
+- Add admin user
+
+```
+[root@pelican pelican]# php artisan p:user:make
+
+ Is this user an administrator? (yes/no) [no]:
+ > yes
+
+ Email Address:
+ > REDACTED
+
+ Username:
+ > admin
+
+Passwords must be at least 8 characters in length and contain at least one capital letter and number.
+If you would like to create an account with a random password emailed to the user, re-run this command (CTRL+C) and pass the `--no-password` flag.
+
+ Password:
+ >
+```
