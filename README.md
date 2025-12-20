@@ -62,10 +62,33 @@ sudo dnf module install -y php:remi-8.4/minimal
 # so we will include it
 sudo dnf install -y php-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm,sodium}
 
-sudo systemctl enable --now php-fpm
-
 sudo dnf module install -y composer:2
+
+sudo systemctl enable --now php-fpm
 ```
+
+- Add `/etc/php-fpm.d/pelican.conf`
+
+```
+[pelican]
+
+user = nginx
+group = nginx
+
+listen = /var/run/php-fpm/pelican.sock
+listen.owner = nginx
+listen.group = nginx
+listen.mode = 0750
+
+# Arbitary limits
+# Taken from https://pterodactyl.io/community/installation-guides/panel/centos8.html#install-dependencies
+pm = ondemand
+pm.max_children = 9
+pm.process_idle_timeout = 10s
+pm.max_requests = 200
+```
+
+- Restart `php-fpm`
 
 - Add `/etc/yum.repos.d/mariadb.repo`
 
