@@ -279,6 +279,14 @@ If you would like to create an account with a random password emailed to the use
  >
 ```
 
+- Install Docker
+
+```bash
+dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+dnf install -y docker-ce
+systemctl enable --now docker
+```
+
 - Install wings
 
 ```bash
