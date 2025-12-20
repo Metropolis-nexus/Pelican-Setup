@@ -80,7 +80,7 @@ server {
 - Configure SELinux
 
 ```bash
-setsebool -P httpd_can_network_redis 1
+sudo setsebool -P httpd_can_network_redis 1
 ```
 
 - Install Remi's repository
@@ -162,7 +162,7 @@ sudo systemctl enable --now mariadb
 - Secure MariaDB
 
 ```
-[root@pelican ~]# mariadb-secure-installation
+[root@pelican ~]# sudo mariadb-secure-installation
 
 Enter current password for root (enter for none):
 Switch to unix_socket authentication [Y/n] y
@@ -171,6 +171,8 @@ Remove anonymous users? [Y/n] y
 Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
 ```
+
+- Switch to the root user
 
 - Create MariaDB user
 
@@ -182,8 +184,6 @@ CREATE DATABASE pelican;
 GRANT ALL PRIVILEGES ON *.* TO 'pelican'@'127.0.0.1' WITH GRANT OPTION;
 exit
 ```
-
-- Switch to the root user
 
 - Setup Pelican
 
