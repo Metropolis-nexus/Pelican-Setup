@@ -332,8 +332,8 @@ systemctl enable --now wings
 ### General
 - Avatar Provider -> UI Avatars
 - Allow users to upload own avatar -> Enable
+- 2FA Requirement -> Required for All Users
 - Trusted Proxies -> NGINX reverse proxy's IP address
-- 
 
 ### OAuth
 - Authentik -> Enable
