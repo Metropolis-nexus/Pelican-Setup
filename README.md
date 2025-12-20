@@ -118,7 +118,7 @@ dnf module install -y composer:2
 systemctl enable --now php-fpm
 ```
 
-- Add `/etc/php-fpm.d/pelican.conf`. The limits are taken from [Pterodactyl documentation](https://pterodactyl.io/community/installation-guides/panel/centos8.html#install-dependencies)
+- Add `/etc/php-fpm.d/pelican.conf`. The limits are taken from [Pterodactyl documentation](https://pterodactyl.io/community/installation-guides/panel/centos8.html#install-dependencies).
 
 ```
 [pelican]
