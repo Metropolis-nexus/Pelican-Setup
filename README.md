@@ -274,9 +274,18 @@ If you would like to create an account with a random password emailed to the use
 
 # Panel configuration
 
-## Advanced
+## Settings 
 
-Database host -> Add database
+### General
+- Avatar Provider -> UI Avatars
+- Trusted Proxies -> NGINX reverse proxy's IP address
+
+### OAuth
+- Authentik -> Enable
+
+## Database host 
+
+Add database:
 - User: pelican
 - Host: 127.0.0.1
 - Display Name: host.docker.internal
