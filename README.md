@@ -118,7 +118,7 @@ dnf module install -y composer:2
 systemctl enable --now php-fpm
 ```
 
-- Add `/etc/php-fpm.d/pelican.conf`
+- Add `/etc/php-fpm.d/pelican.conf`. The limits are taken from [Pterodactyl documentation](https://pterodactyl.io/community/installation-guides/panel/centos8.html#install-dependencies)
 
 ```
 [pelican]
@@ -131,8 +131,6 @@ listen.owner = nginx
 listen.group = nginx
 listen.mode = 0750
 
-# Arbitary limits
-# Taken from https://pterodactyl.io/community/installation-guides/panel/centos8.html#install-dependencies
 pm = ondemand
 pm.max_children = 9
 pm.process_idle_timeout = 10s
