@@ -292,6 +292,10 @@ dnf install -y docker-ce
 systemctl enable --now docker
 ```
 
+- Configure gVisor (follow [Common-Files][https://github.com/Metropolis-nexus/Common-Files] and add `gvisor-auto-update.service/timer` and Docker `daemon.json`)
+
+- Restart Docker
+
 - Install wings
 
 ```bash
@@ -348,4 +352,4 @@ systemctl enable --now wings
 Add database:
 - User: pelican
 - Host: 127.0.0.1
-- Display Name: host.docker.internal
+- Display Name: 172.18.0.1
