@@ -407,18 +407,47 @@ Add database:
 
 ```bash
 PHPMYADMIN=x.x.x
+
 dnf install -y wget unzip
+semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/phpmyadmin/tmp(/.*)?"
 
 cd /var/www
 wget https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN}/phpMyAdmin-${PHPMYADMIN}-all-languages.zip
 unzip phpMyAdmin-${PHPMYADMIN}-all-languages.zip
 rm phpMyAdmin-${PHPMYADMIN}-all-languages.zip
 mv phpMyAdmin-${PHPMYADMIN}-all-languages phpmyadmin
+mkdir /var/www/phpmyadmin/tmp/
 chown -R nginx:nginx phpmyadmin
 
 cp /etc/php-fpm.d/pelican.conf /etc/php-fpm.d/phpmyadmin.conf
 sed -i 's/pelican/phpMyAdmin/g' /etc/php-fpm.d/phpMyAdmin.conf
 systemctl restart php-fpm
+```
+
+Add `/var/www/phpmyadmin/config.inc.php`:
+```
+<?php
+$cfg['blowfish_secret'] = 'REDACTED'
+
+$i = 0;
+
+$i++;
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['host'] = '127.0.0.1';
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+
+$cfg['UploadDir'] = '';
+$cfg['SaveDir'] = '';
+
+$cfg['RowActionType'] = 'both';
+
+$cfg['DefaultLang'] = 'en';
+
+$cfg['QueryHistoryDB'] = true;
+$cfg['QueryHistoryMax'] = 100;
+
+$cfg['SendErrorReports'] = 'never';
 ```
 
 Add `/etc/nginx/conf.d/phpmyadmin.conf`:
@@ -463,3 +492,6 @@ server {
 
 }
 ```
+
+- Log into phpMyAdmin as the pelican user
+- Generate the necessary databases for phpMyAdmin
