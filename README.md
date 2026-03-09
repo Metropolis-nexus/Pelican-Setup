@@ -402,3 +402,64 @@ Add database:
 - User: pelican
 - Host: 127.0.0.1
 - Display Name: 172.18.0.1
+
+# Setup phpMyAdmin
+
+```bash
+PHPMYADMIN=x.x.x
+dnf install -y wget unzip
+
+cd /var/www
+wget https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN}/phpMyAdmin-${PHPMYADMIN}-all-languages.zip
+unzip phpMyAdmin-${PHPMYADMIN}-all-languages.zip
+rm phpMyAdmin-${PHPMYADMIN}-all-languages.zip
+mv phpMyAdmin-${PHPMYADMIN}-all-languages phpmyadmin
+chown -R nginx:nginx phpmyadmin
+
+cp /etc/php-fpm.d/pelican.conf /etc/php-fpm.d/phpmyadmin.conf
+sed -i 's/pelican/phpMyAdmin/g' /etc/php-fpm.d/phpMyAdmin.conf
+systemctl restart php-fpm
+```
+
+Add `/etc/nginx/conf.d/phpmyadmin.conf`:
+
+```
+server {
+    listen 443 ssl;
+
+    server_name phpmyadmin.metropolis.nexus;
+
+    root /var/www/phpmyadmin;
+    index index.php;
+
+    client_max_body_size 100m;
+
+    ssl_certificate /etc/certs/fullchain.pem;
+    ssl_certificate_key /etc/certs/privkey.pem;
+    ssl_session_cache shared:SSL:10m;
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        try_files $uri $uri/ /index.php$request_uri;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php-fpm/phpmyadmin.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTP_PROXY "";
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+        fastcgi_connect_timeout 300;
+        fastcgi_send_timeout 300;
+        fastcgi_read_timeout 300;
+        include /etc/nginx/fastcgi_params;
+    }
+
+}
+```
