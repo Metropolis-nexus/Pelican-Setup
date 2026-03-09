@@ -446,6 +446,11 @@ $cfg['Servers'][$i]['host'] = '127.0.0.1';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
+$cfg['Servers'][$i]['controlhost'] = '127.0.0.1';
+$cfg['Servers'][$i]['controlport'] = '3306';
+$cfg['Servers'][$i]['controluser'] = 'phpmyadmin';
+$cfg['Servers'][$i]['controlpass'] = 'REDACTED'
+
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 
@@ -505,4 +510,5 @@ server {
 ```
 
 - Log into phpMyAdmin as the pelican user
-- Generate the recommended database for phpMyAdmin
+- Create phpmyadmin database and user
+- Give the phpmyadmin user all privileges to the phpmyadmin database
