@@ -380,7 +380,7 @@ WantedBy=multi-user.target
 - Start wings
 
 ```bash
-systemctl enable --now wings
+systemctl enable wings
 ```
 
 # Panel configuration
@@ -402,6 +402,15 @@ Add database:
 - User: pelican
 - Host: 127.0.0.1
 - Display Name: 172.18.0.1
+
+## Nodes
+- Add a node
+- Run the configuration setup
+- Start wings:
+
+```bash
+systemctl start wings
+```
 
 # Setup phpMyAdmin
 
@@ -436,6 +445,8 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = '127.0.0.1';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
+
+$cfg['TempDir'] (/var/www/phpmyadmin/tmp/)
 
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
