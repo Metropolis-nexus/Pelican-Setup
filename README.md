@@ -446,8 +446,6 @@ $cfg['Servers'][$i]['host'] = '127.0.0.1';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
-$cfg['TempDir'] (/var/www/phpmyadmin/tmp/)
-
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 
@@ -459,6 +457,8 @@ $cfg['QueryHistoryDB'] = true;
 $cfg['QueryHistoryMax'] = 100;
 
 $cfg['SendErrorReports'] = 'never';
+
+$cfg['TempDir'] = '/var/www/phpmyadmin/tmp/';
 ```
 
 Add `/etc/nginx/conf.d/phpmyadmin.conf`:
@@ -505,4 +505,4 @@ server {
 ```
 
 - Log into phpMyAdmin as the pelican user
-- Generate the necessary databases for phpMyAdmin
+- Generate the recommended database for phpMyAdmin
