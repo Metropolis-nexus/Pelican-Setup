@@ -298,6 +298,11 @@ systemctl enable --now docker
 dnf install -y crun
 ```
 
+- Add zstd (if intend to use gVisor)
+```
+dnf install -y zstd
+```
+
 - Configure gVisor or crun. Follow [Common-Files](https://github.com/Metropolis-nexus/Common-Files) for the gvisor update service and timer. `/etc/docker/daemon.json` should look as follows:
 
 ```
